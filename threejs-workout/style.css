@@ -1,3 +1,12 @@
 body {
   font-size: 15pt;
 }
+
+#info {
+  position: absolute;
+  display: block;
+  top: 0;
+  background-color: black;
+  color: hotpink;
+  padding: 1em;
+}
