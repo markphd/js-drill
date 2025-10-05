@@ -3,31 +3,26 @@ import * as THREE from 'three';
 const width = window.innerWidth,
 	height = window.innerHeight;
 
-// init
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
-camera.position.z = 1;
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
+camera.position.set(0, 0, 100);
+camera.lookAt(0, 0, 0);
 
 const scene = new THREE.Scene();
 
-const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-// const material = new THREE.MeshNormalMaterial();
-const material = new THREE.MeshBasicMaterial({ color: '#3ad' });
+const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
 
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
+const points = [];
+points.push(new THREE.Vector3(-10, 0, 0));
+points.push(new THREE.Vector3(0, 10, 0));
+points.push(new THREE.Vector3(10, 0, 0));
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(width, height, false);
-renderer.setAnimationLoop(animate);
-document.body.appendChild(renderer.domElement);
+const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-// animation
+const line = new THREE.Line( geometry, material );
 
-function animate(time) {
-	
-	mesh.rotation.x = time / 800;
-	mesh.rotation.y = time / 800;
-	renderer.render(scene, camera);
-	
-}
+scene.add(line);
+renderer.render(scene, camera);
