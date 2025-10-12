@@ -26,11 +26,19 @@
     </script>
     <script src="https://unpkg.com/@barba/core"></script>
   </head>
-  <body>
-    <div id="info">
+  <body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="home">
+      <div id="info">
       Three.js 101 - Documentation
-      <p>Trying Highway JS</p>
+      <p>Trying Barba JS</p>
     </div>
+    </main>
+    
     <script type="module" src="./main.js"></script>
+    <script>
+      barba.init({
+        
+      })
+</script>
   </body>
 </html>
