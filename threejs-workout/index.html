@@ -21,24 +21,34 @@
         }
       }
     </script>
-    <script type="module"> 
-      import dogstudiohighway from "https://cdn.jsdelivr.net/npm/@dogstudio/highway@2.2.1/+esm" 
+    <script type="module">
+      import dogstudiohighway from "https://cdn.jsdelivr.net/npm/@dogstudio/highway@2.2.1/+esm";
     </script>
     <script src="https://unpkg.com/@barba/core"></script>
   </head>
   <body data-barba="wrapper">
     <main data-barba="container" data-barba-namespace="home">
       <div id="info">
-      Three.js 101 - Documentation
-      <p>Trying Barba JS</p>
-    </div>
+        Three.js 101 - Documentation
+        <p>Trying Barba JS</p>
+      </div>
     </main>
-    
+
     <script type="module" src="./main.js"></script>
     <script>
       barba.init({
-        
-      })
-</script>
+        transitions: [
+          {
+            name: "default-transition",
+            leave() {
+              // create your stunning leave animation here
+            },
+            enter() {
+              // create your amazing enter animation here
+            },
+          },
+        ],
+      });
+    </script>
   </body>
 </html>
